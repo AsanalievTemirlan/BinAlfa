@@ -21,7 +21,6 @@ class BinRepositoryImpl(private val binApiService: BinApiService, private val da
         }
     }
 
-    override suspend fun saveBinToDatabase(model: BinModel) =
-        dao.addBin(model.toBinEntity())
-
+    override suspend fun saveBinToDatabase(model: BinModel, bin: String) =
+        dao.addBin(model.toBinEntity(bin = bin))
 }

@@ -12,7 +12,7 @@ class GetBinInfoUseCase(private val repository: BinRepository) {
         val response = repository.getBinInfo(bin)
         if (response.isSuccessful) {
             response.body()?.let {
-                repository.saveBinToDatabase(it)
+                repository.saveBinToDatabase(it, bin)
             } ?: run {
                 LogUtil.e("Response body is null")
             }

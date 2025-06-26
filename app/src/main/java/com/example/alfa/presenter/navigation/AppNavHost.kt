@@ -26,6 +26,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.alfa.R
 import com.example.alfa.presenter.screnns.CardHistoryScreen
 import com.example.alfa.presenter.screnns.MainScreen
+import com.example.alfa.presenter.ui.theme.MyBlack
+import com.example.alfa.presenter.ui.theme.MyBlue
+import com.example.alfa.presenter.ui.theme.MyBlue2
+import com.example.alfa.presenter.ui.theme.MyGray
 
 @Composable
 fun AppNavHost() {
@@ -47,11 +51,11 @@ fun AppNavHost() {
         bottomBar = {
             if (currentRoute in bottomNavScreens) {
                 NavigationBar(
-                    containerColor = Color.Red,
+                    containerColor = MyBlue,
                     contentColor = Color.White,
                     tonalElevation = 0.dp,
                     modifier = Modifier
-                        .background(Color.Black)
+                        .background(MyBlack)
                         .clip(
                             RoundedCornerShape(
                                 topStart = 12.dp,
@@ -88,14 +92,14 @@ fun AppNavHost() {
                                     text = screen.title,
                                     fontSize = 12.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color = if (currentRoute == screen.route) Color.Yellow else Color.White
+                                    color = if (currentRoute == screen.route) Color.White else MyGray
                                 )
                             },
                             colors = NavigationBarItemDefaults.colors(
-                                selectedIconColor = Color.Yellow,
-                                unselectedIconColor = Color.White,
-                                selectedTextColor = Color.Yellow,
-                                unselectedTextColor = Color.White,
+                                selectedIconColor = Color.White,
+                                unselectedIconColor = MyGray,
+                                selectedTextColor = Color.White,
+                                unselectedTextColor = MyGray,
                                 indicatorColor = Color.Transparent
                             )
                         )
@@ -123,5 +127,5 @@ object Routes {
 
 sealed class ScreensBottom(val route: String, val title: String, val iconRes: Int) {
     data object Home : ScreensBottom(Routes.MAIN, "Home", R.drawable.ic_circle)
-    data object History : ScreensBottom(Routes.CARD, "Top", R.drawable.ic_book)
+    data object History : ScreensBottom(Routes.CARD, "History", R.drawable.ic_book)
 }

@@ -5,5 +5,5 @@ import retrofit2.Response
 
 interface BinRepository {
     suspend fun getBinInfo(bin: String): Response<BinModel>
-    suspend fun saveBinToDatabase(model: BinModel)
+    suspend fun saveBinToDatabase(model: BinModel, bin: String)
 }

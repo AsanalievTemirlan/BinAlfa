@@ -15,20 +15,4 @@ data class Bank(
     val url: String
 )
 
-fun Bank.toBankModel(): BankModel {
-    return BankModel(
-        name = this.name ?: "Unknown Name",
-        url = this.url ?: "Unknown URL",
-        phone = this.phone ?: "Unknown Phone",
-        city = this.city ?: "Unknown City"
-    )
-}
 
-fun BankModel.toBank(): Bank {
-    return Bank(
-        name = this.name ?: "Unknown Name",
-        url = this.url ?: "Unknown URL",
-        phone = this.phone ?: "Unknown Phone",
-        city = this.city ?: "Unknown City"
-    )
-}

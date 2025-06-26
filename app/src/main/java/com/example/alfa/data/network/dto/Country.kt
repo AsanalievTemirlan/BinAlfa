@@ -21,27 +21,3 @@ data class Country(
     val numeric: String
 )
 
-fun Country.toCountryModel(): CountryModel {
-    return CountryModel(
-        alpha2 = this.alpha2 ?: "Unknown Alpha2",
-        currency = this.currency ?: "Unknown Currency",
-        emoji = this.emoji ?: "Unknown Emoji",
-        latitude = this.latitude ?: 0,
-        longitude = this.longitude ?: 0,
-        name = this.name ?: "Unknown Name",
-        numeric = this.numeric ?: "Unknown Numeric"
-    )
-}
-
-fun CountryModel.toCountry(): Country {
-    return Country(
-        alpha2 = this.alpha2 ?: "Unknown Alpha2",
-        currency = this.currency ?: "Unknown Currency",
-        emoji = this.emoji ?: "Unknown Emoji",
-        latitude = this.latitude ?: 0,
-        longitude = this.longitude ?: 0,
-        name = this.name ?: "Unknown Name",
-        numeric = this.numeric ?: "Unknown Numeric"
-    )
-}
-

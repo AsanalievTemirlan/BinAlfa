@@ -25,48 +25,48 @@ data class BinEntity(
     val brand: String,
     val prepaid: Boolean,
     val scheme: String,
-    val type: String
+    val type: String,
+    val bin: String,
 )
-
 fun BankEntity.toBankModel(): BankModel {
     return BankModel(
-        city = this.city ?: "Unknown City",
-        name = this.bankName ?: "Unknown Name",
-        phone = this.phone ?: "Unknown Phone",
-        url = this.url ?: "Unknown URL"
+        city = this.city ?: "Город не указан",
+        name = this.bankName ?: "Название банка не указано",
+        phone = this.phone ?: "Телефон не указан",
+        url = this.url ?: "Сайт не указан"
     )
 }
 
 fun BankModel.toBankEntity(): BankEntity {
     return BankEntity(
-        city = this.city ?: "Unknown City",
-        bankName = this.name ?: "Unknown Name",
-        phone = this.phone ?: "Unknown Phone",
-        url = this.url ?: "Unknown URL"
+        city = this.city ?: "Город не указан",
+        bankName = this.name ?: "Название банка не указано",
+        phone = this.phone ?: "Телефон не указан",
+        url = this.url ?: "Сайт не указан"
     )
 }
 
 fun CountryEntity.toCountryModel(): CountryModel {
     return CountryModel(
-        alpha2 = this.alpha2 ?: "Unknown Alpha2",
-        currency = this.currency ?: "Unknown Currency",
-        emoji = this.emoji ?: "Unknown Emoji",
+        alpha2 = this.alpha2 ?: "Код страны не указан",
+        currency = this.currency ?: "Валюта не указана",
+        emoji = this.emoji ?: "Флаг отсутствует",
         latitude = this.latitude ?: 0,
         longitude = this.longitude ?: 0,
-        name = this.name ?: "Unknown Name",
-        numeric = this.numeric ?: "Unknown Numeric"
+        name = this.name ?: "Название страны не указано",
+        numeric = this.numeric ?: "Код страны не указан"
     )
 }
 
 fun CountryModel.toCountryEntity(): CountryEntity {
     return CountryEntity(
-        alpha2 = this.alpha2 ?: "Unknown Alpha2",
-        currency = this.currency ?: "Unknown Currency",
-        emoji = this.emoji ?: "Unknown Emoji",
+        alpha2 = this.alpha2 ?: "Код страны не указан",
+        currency = this.currency ?: "Валюта не указана",
+        emoji = this.emoji ?: "Флаг отсутствует",
         latitude = this.latitude ?: 0,
         longitude = this.longitude ?: 0,
-        name = this.name ?: "Unknown Name",
-        numeric = this.numeric ?: "Unknown Numeric"
+        name = this.name ?: "Название страны не указано",
+        numeric = this.numeric ?: "Код страны не указан"
     )
 }
 
@@ -87,23 +87,25 @@ fun NumberModel.toNumberEntity(): NumberEntity {
 fun BinEntity.toBinModel(): BinModel {
     return BinModel(
         bankModel = bankEntity.toBankModel(),
-        brand = this.brand ?: "Unknown Brand",
+        brand = this.brand ?: "Бренд не указан",
         countryModel = countryEntity.toCountryModel(),
         numberModel = numberEntity.toNumberModel(),
         prepaid = this.prepaid,
-        scheme = this.scheme ?: "Unknown Scheme",
-        type = this.type ?: "Unknown Type"
+        scheme = this.scheme ?: "Схема не указана",
+        type = this.type ?: "Тип не указан",
+        bin = bin
     )
 }
 
-fun BinModel.toBinEntity(): BinEntity {
+fun BinModel.toBinEntity(bin: String): BinEntity {
     return BinEntity(
         bankEntity = bankModel.toBankEntity(),
-        brand = this.brand ?: "Unknown Brand",
+        brand = this.brand ?: "Бренд не указан",
         countryEntity = countryModel.toCountryEntity(),
         numberEntity = numberModel.toNumberEntity(),
         prepaid = this.prepaid,
-        scheme = this.scheme ?: "Unknown Scheme",
-        type = this.type ?: "Unknown Type"
+        scheme = this.scheme ?: "Схема не указана",
+        type = this.type ?: "Тип не указан",
+        bin = bin ?: "BIN не указан"
     )
 }
