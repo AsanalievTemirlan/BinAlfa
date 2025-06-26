@@ -12,13 +12,17 @@ import com.example.alfa.domain.model.NumberModel
 data class BinEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    @Embedded
+
+    @Embedded(prefix = "bank_")
     val bankEntity: BankEntity,
-    val brand: String,
-    @Embedded
+
+    @Embedded(prefix = "country_")
     val countryEntity: CountryEntity,
-    @Embedded
+
+    @Embedded(prefix = "number_")
     val numberEntity: NumberEntity,
+
+    val brand: String,
     val prepaid: Boolean,
     val scheme: String,
     val type: String
@@ -27,7 +31,7 @@ data class BinEntity(
 fun BankEntity.toBankModel(): BankModel {
     return BankModel(
         city = this.city ?: "Unknown City",
-        name = this.name ?: "Unknown Name",
+        name = this.bankName ?: "Unknown Name",
         phone = this.phone ?: "Unknown Phone",
         url = this.url ?: "Unknown URL"
     )
@@ -36,7 +40,7 @@ fun BankEntity.toBankModel(): BankModel {
 fun BankModel.toBankEntity(): BankEntity {
     return BankEntity(
         city = this.city ?: "Unknown City",
-        name = this.name ?: "Unknown Name",
+        bankName = this.name ?: "Unknown Name",
         phone = this.phone ?: "Unknown Phone",
         url = this.url ?: "Unknown URL"
     )

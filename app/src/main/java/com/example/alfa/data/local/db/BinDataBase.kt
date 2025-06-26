@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.example.alfa.data.local.dao.BinDao
 import com.example.alfa.data.local.entity.BinEntity
 
-@Database(entities = [BinEntity::class], version = 1)
+@Database(entities = [BinEntity::class], version = 2)
 abstract class BinDataBase: RoomDatabase() {
     abstract fun dao(): BinDao
 }
