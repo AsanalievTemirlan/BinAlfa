@@ -12,13 +12,17 @@ import com.example.alfa.domain.model.NumberModel
 data class BinEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
+
     @Embedded
     val bankEntity: BankEntity,
-    val brand: String,
+
     @Embedded
     val countryEntity: CountryEntity,
+
     @Embedded
     val numberEntity: NumberEntity,
+
+    val brand: String,
     val prepaid: Boolean,
     val scheme: String,
     val type: String
@@ -27,7 +31,7 @@ data class BinEntity(
 fun BankEntity.toBankModel(): BankModel {
     return BankModel(
         city = this.city ?: "Unknown City",
-        name = this.name ?: "Unknown Name",
+        name = this.bankName ?: "Unknown Name",
         phone = this.phone ?: "Unknown Phone",
         url = this.url ?: "Unknown URL"
     )
@@ -36,7 +40,7 @@ fun BankEntity.toBankModel(): BankModel {
 fun BankModel.toBankEntity(): BankEntity {
     return BankEntity(
         city = this.city ?: "Unknown City",
-        name = this.name ?: "Unknown Name",
+        bankName = this.name ?: "Unknown Name",
         phone = this.phone ?: "Unknown Phone",
         url = this.url ?: "Unknown URL"
     )
@@ -49,7 +53,7 @@ fun CountryEntity.toCountryModel(): CountryModel {
         emoji = this.emoji ?: "Unknown Emoji",
         latitude = this.latitude ?: 0,
         longitude = this.longitude ?: 0,
-        name = this.name ?: "Unknown Name",
+        name = this.countryName ?: "Unknown Name",
         numeric = this.numeric ?: "Unknown Numeric"
     )
 }
@@ -61,7 +65,7 @@ fun CountryModel.toCountryEntity(): CountryEntity {
         emoji = this.emoji ?: "Unknown Emoji",
         latitude = this.latitude ?: 0,
         longitude = this.longitude ?: 0,
-        name = this.name ?: "Unknown Name",
+        countryName = this.name ?: "Unknown Name",
         numeric = this.numeric ?: "Unknown Numeric"
     )
 }

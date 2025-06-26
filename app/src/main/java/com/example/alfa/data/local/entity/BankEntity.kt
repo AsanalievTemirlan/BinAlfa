@@ -7,9 +7,9 @@ import com.example.alfa.domain.model.BankModel
 @Entity(tableName = "bank")
 data class BankEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
+    val bankId: Long = 0,
     val city: String,
-    val name: String,
+    val bankName: String,
     val phone: String,
     val url: String
 )
