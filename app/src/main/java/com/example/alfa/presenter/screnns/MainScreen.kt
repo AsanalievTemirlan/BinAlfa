@@ -1,5 +1,6 @@
 package com.example.alfa.presenter.screnns
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -129,6 +130,7 @@ fun MainScreen(
 
             is UiState.Success -> {
                 binInfo?.let { info ->
+                    Log.e("ololo", "MainScreen: $info", )
                     Card(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -199,7 +201,7 @@ fun MainScreen(
                     ActionButton(
                         text = "Перейти на сайт банка",
                         onClick = {
-                            if (info.bankModel.url == "Unknown URL") {
+                            if (info.bankModel.url == "Unknown URL"  || info.bankModel.url == "Сайт не указан") {
                                 dialogMessage = "К сожалению, сайт банка не указан"
                             } else {
                                 openUrl(context, info.bankModel.url)
@@ -212,7 +214,7 @@ fun MainScreen(
                     ActionButton(
                         text = "Позвонить в банк",
                         onClick = {
-                            if (info.bankModel.phone == "Unknown Phone") {
+                            if (info.bankModel.phone == "Unknown Phone" || info.bankModel.phone == "Телефон не указан") {
                                 dialogMessage = "К сожалению, телефон банка не указан"
                             } else {
                                 openPhone(context, info.bankModel.phone)
